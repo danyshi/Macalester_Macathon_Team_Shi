@@ -13,8 +13,9 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="732dp"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dip"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/room_name"
         android:background="#8e44ad"
@@ -26,10 +27,10 @@
         android:layout_height="339dp"
         android:id="@+id/room_details_listView"
         android:layout_gravity="center"
-        android:background="#8e44ad"
+        android:background="#9b59b6"
         android:paddingLeft="100dip"
         android:paddingRight="100dip"
-        android:drawSelectorOnTop="false" />
+        android:drawSelectorOnTop="false"/>
 
     <ImageSwitcher
         android:layout_width="wrap_content"
@@ -41,5 +42,8 @@
         android:layout_height="wrap_content"
         android:text="Return to floor"
         android:id="@+id/return_button"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="#ff3d2e50"
+        android:textColor="#fff2eded"/>
+
 </LinearLayout>
