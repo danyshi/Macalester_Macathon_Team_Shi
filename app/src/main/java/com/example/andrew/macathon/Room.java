@@ -6,4 +6,5 @@ package com.example.andrew.macathon;
  * has schedule of events: list<tuple(startTime, endTime)>
  */
 public class Room {
+    
 }

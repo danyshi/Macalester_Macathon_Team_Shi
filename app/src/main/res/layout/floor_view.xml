@@ -9,11 +9,26 @@
         android:layout_height="fill_parent"
         android:layout_gravity="left|top">
 
-        <ListView
-            android:layout_width="match_parent"
+
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/floor_view"
-            android:layout_gravity="center_horizontal"
-            android:entries="@array/room_array" />
+            android:text="Room 1"
+            android:id="@+id/room1"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room 2"
+            android:id="@+id/room2"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room 3"
+            android:id="@+id/room3"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </FrameLayout>
