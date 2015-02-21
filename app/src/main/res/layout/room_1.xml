@@ -9,10 +9,12 @@
         android:layout_height="fill_parent"
         android:layout_gravity="left|top">
 
-        <ListView
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/room_1"
-            android:layout_gravity="center_horizontal"/>
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/text_room1"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </FrameLayout>
