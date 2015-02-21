@@ -1,120 +1,204 @@
 package com.example.andrew.macathon;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-import android.widget.Button;
+import android.widget.ImageView;
 
+
+import com.example.andrew.macathon.data.CampusCentre;
+import com.example.andrew.macathon.data.Event;
 import com.example.andrew.macathon.data.Room;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Handler;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends Activity implements UpdateRoomStatus{
+
+    List<Drawable> availableRooms = new ArrayList<>();
+    List<Drawable> unavailableRooms = new ArrayList<>();
+    private ArrayList<Room> roomsList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setBackgrounds();
+        CampusCentre cc = new CampusCentre();
+        this.roomsList = cc.getAllRooms();
 
-        setContentView(R.layout.floor_view);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    //TODO: switch room frag to mainfrag
-                    .add(R.id.container, new RoomFragment())
-                    .commit();
+        ImageView cc201 = (ImageView) findViewById(R.id.CC201);
+        cc201.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewRoomDetails(0);
+            }
+        });
+        ImageView cc202 = (ImageView) findViewById(R.id.CC202);
+        cc202.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewRoomDetails(1);
+            }
+        });
+        ImageView cc203 = (ImageView) findViewById(R.id.CC203);
+        cc203.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewRoomDetails(2);
+            }
+        });
+        ImageView cc204 = (ImageView) findViewById(R.id.CC204);
+        cc204.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewRoomDetails(3);
+            }
+        });
+        ImageView cc205 = (ImageView) findViewById(R.id.CC205);
+        cc205.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewRoomDetails(4);
+            }
+        });
+        ImageView cc206 = (ImageView) findViewById(R.id.CC206);
+        cc206.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewRoomDetails(5);
+            }
+        });
+        ImageView cc207 = (ImageView) findViewById(R.id.CC207);
+        cc207.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewRoomDetails(6);
+            }
+        });
+
+
+
+        new CheckAvailabilityTask(this).execute();
+    }
+
+    public String convertTime(Integer[] times) {
+        int startTime, endTime;
+        String a, b;
+        if (times[0] > 1200) {
+            startTime = times[0] - 1200;
+            a = "pm";
+        } else {
+            a = "am";
+            startTime = times[0];
         }
+        if (times[1] > 1200) {
+            endTime = times[1] - 1200;
+            b = "pm";
+        } else {
+            b = "am";
+            endTime = times[1];
+        }
+        int hrsStart = startTime / 100;
+        int hrsEnd = endTime / 100;
+        int minStart = startTime - 100 * hrsStart;
+        int minEnd = endTime - 100 * hrsEnd;
+        String minStartString, minEndString;
+        if (minStart < 10){
+            minStartString = "0" + minStart;
+        } else {
+            minStartString = Integer.toString(minStart);
+        }
+        if (minEnd < 10){
+            minEndString = "0" + minEnd;
+        } else {
+            minEndString = Integer.toString(minEnd);
+        }
+        return hrsStart + ":" + minStartString  + a + " - " + hrsEnd + ":" + minEndString + b + " ";
+    }
+
+    public void viewRoomDetails(int roomKey){
+        Room r = roomsList.get(roomKey);
+//        TextView cc202 = (TextView) findViewById(R.id.room_name);
+        Log.d("room", "ROOM0 NAME:" + r.getName() + "*******************************");
+        ArrayList<Event> events = r.getScheduledEvents();
+        ArrayList<String> data = new ArrayList<String>();
+        data.add(r.getName()); //first entry is name of room
+        for (Event e : events){
+            Integer[] times = {e.getStartTime(), e.getEndTime()};
+            String time = convertTime(times);
+            String s = time + e.getTitle();
+            data.add(time + e.getTitle());
+            Log.d("Schedule Item", s + "***********************************");
+        }
+
+        RoomDetails roomDetails = new RoomDetails();
+        Bundle bundle = new Bundle();
+
+        bundle.putStringArrayList("key", data);
+        roomDetails.setArguments(bundle);
+
+        getFragmentManager().beginTransaction()
+                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                .add(R.id.container, roomDetails)
+                .commit();
+    }
+    private void setBackgrounds() {
+        availableRooms.add(getResources().getDrawable(R.drawable.room_0_available));
+        availableRooms.add(getResources().getDrawable(R.drawable.room_1_available));
+        availableRooms.add(getResources().getDrawable(R.drawable.room_2_available));
+        availableRooms.add(getResources().getDrawable(R.drawable.room_3_available));
+        availableRooms.add(getResources().getDrawable(R.drawable.room_4_available));
+        availableRooms.add(getResources().getDrawable(R.drawable.room_5_available));
+        availableRooms.add(getResources().getDrawable(R.drawable.room_6_available));
+
+        unavailableRooms.add(getResources().getDrawable(R.drawable.room_0_unavailable));
+        unavailableRooms.add(getResources().getDrawable(R.drawable.room_1_unavailable));
+        unavailableRooms.add(getResources().getDrawable(R.drawable.room_2_unavailable));
+        unavailableRooms.add(getResources().getDrawable(R.drawable.room_3_unavailable));
+        unavailableRooms.add(getResources().getDrawable(R.drawable.room_4_unavailable));
+        unavailableRooms.add(getResources().getDrawable(R.drawable.room_5_unavailable));
+        unavailableRooms.add(getResources().getDrawable(R.drawable.room_6_unavailable));
+
+
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public static class MainFragment extends Fragment {
-        private Button room1;
-        private Button room2;
-        private Button room3;
-
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            //return super.onCreateView(inflater, container, savedInstanceState);
-//            getActivity().setContentView(R.layout.floor_view);
-            final View rootView = inflater.inflate(R.layout.floor_view, container, false);
-
-
-            room1 = (Button) rootView.findViewById(R.id.room1);
-            room1.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v) {
-
-                    //showRoom(rootView);
-                    rootView.setVisibility(View.GONE);
-
-
-//                    Intent intent = new Intent(getActivity(), Room.class);
-//                    startActivity(intent);
+    public void processRoomStatusChange(String action, String room) {
+        int resID = getResources().getIdentifier(room, "id", getPackageName());
+        Log.d("ID:", String.valueOf(resID));
+        final ImageView roomView = (ImageView) findViewById(resID);
+        if (action.equals("not available")) {
+            final String roomNumber = room.substring(4);
+            Log.d("Making unavailable", roomNumber);
+            MainActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    roomView.setBackgroundDrawable(unavailableRooms.get(Integer.parseInt(roomNumber) - 1));
                 }
             });
-            room2 = (Button) rootView.findViewById(R.id.room2);
-            room2.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), Room.class);
-                    startActivity(intent);
+        } else {
+            final String roomNumber = room.substring(4);
+            Log.d("Making available", roomNumber);
+            MainActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    roomView.setBackgroundDrawable(availableRooms.get(Integer.parseInt(roomNumber) - 1));
                 }
             });
-            room3 = (Button) rootView.findViewById(R.id.room3);
-            room3.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), Room.class);
-                    startActivity(intent);
-                }
-            });
-
-
-            return rootView;
-        }
-
-        public void showRoom(View view){
-            Fragment roomFrag = new RoomFragment();
-
-            FragmentManager fm = getActivity().getFragmentManager();
-            FragmentTransaction transaction = fm.beginTransaction();
-            //transaction.add(R.layout.floor_view, roomFrag);
-            transaction.commit();
-
         }
     }
 
+    public void roomOnClick(View view) {
+
+    }
 }
 

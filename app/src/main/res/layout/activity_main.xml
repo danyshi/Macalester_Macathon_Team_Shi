@@ -1,0 +1,129 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1F1"
+    android:id="@+id/container"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CC201"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="roomOnClick"
+        android:tag="CC 201"
+        android:background="@drawable/room_0_available"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="394dp"
+        android:layout_marginLeft="40dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CC202"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="roomOnClick"
+        android:tag="CC 202"
+        android:background="@drawable/room_1_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/CC201"
+        android:layout_marginLeft="41dp"
+        android:layout_marginBottom="261.5dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CC203"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="roomOnClick"
+        android:tag="CC 203"
+        android:background="@drawable/room_1_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/CC202"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="261.5dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CC204"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="roomOnClick"
+        android:tag="CC 204"
+        android:background="@drawable/room_3_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/CC203"
+        android:layout_marginLeft="278dp"
+        android:layout_marginBottom="264dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CC205"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="roomOnClick"
+        android:tag="CC 205"
+        android:background="@drawable/room_4_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/CC204"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="264dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CC206"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="roomOnClick"
+        android:tag="CC206"
+        android:background="@drawable/room_5_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/CC205"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="264dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CC207"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="roomOnClick"
+        android:tag="CC 207"
+        android:background="@drawable/room_6_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/CC206"
+        android:layout_marginLeft="41dp"
+        android:layout_marginBottom="395dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/floor_plan"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/cc_2"
+        android:contentDescription="@string/floor_plan" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Campus Center"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#9b59b6"
+        android:textStyle="bold"/>
+
+</RelativeLayout>
