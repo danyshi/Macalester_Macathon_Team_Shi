@@ -18,13 +18,13 @@ public class CampusCentre {
         for (i=0;i<2400;i+=50){
             availableRooms.put(i, new ArrayList<Room>());
         }
-        this.roomsList.add(new Room("CC 201", "Campus Centre"));
-        this.roomsList.add(new Room("CC 202", "Campus Centre"));
-        this.roomsList.add(new Room("CC 203", "Campus Centre"));
-        this.roomsList.add(new Room("CC 204", "Campus Centre"));
-        this.roomsList.add(new Room("CC 205", "Campus Centre"));
-        this.roomsList.add(new Room("CC 206", "Campus Centre"));
-        this.roomsList.add(new Room("CC 207", "Campus Centre"));
+        this.roomsList.add(new Room("CC 201", "Campus Centre", "CC201"));
+        this.roomsList.add(new Room("CC 202", "Campus Centre", "CC202"));
+        this.roomsList.add(new Room("CC 203", "Campus Centre", "CC203"));
+        this.roomsList.add(new Room("CC 204", "Campus Centre", "CC204"));
+        this.roomsList.add(new Room("CC 205", "Campus Centre", "CC205"));
+        this.roomsList.add(new Room("CC 206", "Campus Centre", "CC206"));
+        this.roomsList.add(new Room("CC 207", "Campus Centre", "CC207"));
     }
 
 
@@ -34,18 +34,19 @@ public class CampusCentre {
 
     public void generateSchedule(){
         Room room1 = roomsList.get(0);
-        room1.addEvent(new Event(100, 300, "Coding!"));
+        room1.addEvent(new Event(500, 600, "Coding!"));
         room1.addEvent(new Event(1000,1400, "Macathon Meeting"));
         room1.addEvent(new Event(1600,1800, "We have this space just because we can"));
         room1.addEvent(new Event(2200,2300, "Late night homework parties woo!"));
 
         Room room2 = roomsList.get(1);
+        room2.addEvent(new Event(500,600, "Investment Group meeting"));
         room2.addEvent(new Event(1900,2000, "Investment Group meeting"));
         room2.addEvent(new Event(2000,2100, "Entrepreneurship club"));
         room2.addEvent(new Event(1750,1850, "Singing in the CC"));
 
         Room room3 = roomsList.get(4);
-        room3.addEvent(new Event(1900,2000, "Mac PandA"));
+        room3.addEvent(new Event(500,600, "Mac PandA"));
         room3.addEvent(new Event(2000,2100, "Mac Sudo"));
         room3.addEvent(new Event(1750,1850, "MCSG"));
 

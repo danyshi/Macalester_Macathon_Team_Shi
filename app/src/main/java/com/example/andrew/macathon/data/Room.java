@@ -1,5 +1,7 @@
 package com.example.andrew.macathon.data;
 
+import android.widget.ImageView;
+
 import java.util.ArrayList;
 
 /**
@@ -7,6 +9,7 @@ import java.util.ArrayList;
  */
 public class Room {
 
+    private final String roomId;
     private String name, building;
     private boolean isOccupied;
 
@@ -34,9 +37,10 @@ public class Room {
         this.isOccupied = isOccupied;
     }
 
-    public Room(String name, String building){
+    public Room(String name, String building, String roomId){
         this.name = name;
         this.building = building;
+        this.roomId = roomId;
     }
 
     private ArrayList<Event> scheduledEvents = new ArrayList<Event>();
@@ -56,5 +60,9 @@ public class Room {
 
     public void makeAvailable() {
         isOccupied = false;
+    }
+
+    public String getRoomId() {
+        return roomId;
     }
 }
