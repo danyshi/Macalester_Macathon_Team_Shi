@@ -1,0 +1,117 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1F1"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/room_0"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="toggleAvailability"
+        android:tag="available"
+        android:background="@drawable/room_0_available"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="394dp"
+        android:layout_marginLeft="40dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/room_1"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="toggleAvailability"
+        android:tag="available"
+        android:background="@drawable/room_1_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/room_0"
+        android:layout_marginLeft="41dp"
+        android:layout_marginBottom="261.5dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/room_2"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="toggleAvailability"
+        android:tag="available"
+        android:background="@drawable/room_1_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/room_1"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="261.5dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/room_3"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="toggleAvailability"
+        android:tag="available"
+        android:background="@drawable/room_3_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/room_2"
+        android:layout_marginLeft="278dp"
+        android:layout_marginBottom="264dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/room_4"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="toggleAvailability"
+        android:tag="available"
+        android:background="@drawable/room_4_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/room_3"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="264dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/room_5"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="toggleAvailability"
+        android:tag="available"
+        android:background="@drawable/room_5_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/room_4"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="264dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/room_6"
+        android:layout_gravity="center"
+        android:contentDescription="@string/floor_plan"
+        android:onClick="toggleAvailability"
+        android:tag="available"
+        android:background="@drawable/room_6_available"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/room_5"
+        android:layout_marginLeft="41dp"
+        android:layout_marginBottom="395dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/floor_plan"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/cc_2"
+        android:contentDescription="@string/floor_plan" />
+
+</RelativeLayout>

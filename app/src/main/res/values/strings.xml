@@ -4,6 +4,7 @@
     <string name="app_name">Macathon</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_floor">FloorActivity</string>
+    <string name="floor_plan">floor_plan</string>
     <string-array name="Events">
         <item>Event1</item>
         <item>Event2</item>

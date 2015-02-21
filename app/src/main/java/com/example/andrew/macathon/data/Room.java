@@ -48,4 +48,13 @@ public class Room {
     public void addEvent(Event event){
         this.scheduledEvents.add(event);
     }
+
+    public void makeUnavailable() {
+        isOccupied = true;
+
+    }
+
+    public void makeAvailable() {
+        isOccupied = false;
+    }
 }
