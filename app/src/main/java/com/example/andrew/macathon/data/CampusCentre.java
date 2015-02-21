@@ -73,4 +73,8 @@ public class CampusCentre {
             }
         }
     }
+
+    public List<Room> getRoomsList(){
+        return roomsList;
+    }
 }

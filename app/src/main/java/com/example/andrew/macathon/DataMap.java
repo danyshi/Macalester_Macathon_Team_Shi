@@ -54,8 +54,10 @@ public class DataMap {
         return totalTime;
     }
     private HashMap<Integer, ArrayList<Room>> availableRooms;
-    public void getData(){
+
+    public List<Room> getData(){
         CampusCentre CC = new CampusCentre();
         availableRooms = CC.getSchedule();
+        return CC.getRoomsList();
     }
 }
