@@ -2,7 +2,6 @@ package com.example.andrew.macathon.data;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Asra Nizami on 2/20/2015.
@@ -42,16 +41,19 @@ public class CampusCentre {
         availableRooms.put(1000, roomslist2);
     }
 
-    public void addEvent(Room room, Tuple time){
-        Integer startTime = time.getStartTime();
-        Integer endTime = time.getEndTime();
-        for (Integer i=startTime;i<endTime;i+=50){
-            List<Room> roomsList = availableRooms.get(i);
-            if (roomsList==null){
-                roomsList = new ArrayList<Room>();
+    public void addRoom(Room room){
+        ArrayList<Event> scheduledEvents = room.getScheduledEvents();
+        for (Event event : scheduledEvents){
+            Integer startTime = event.getStartTime();
+            Integer endTime = event.getEndTime();
+            for (Integer i = startTime; i < endTime; i += 50) {
+                List<Room> roomsList = availableRooms.get(i);
+                if (roomsList == null) {
+                    roomsList = new ArrayList<Room>();
+                }
+                roomsList.add(room);
+                availableRooms.put(i, roomsList);
             }
-            roomsList.add(room);
-            availableRooms.put(i, roomsList);
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.andrew.macathon.data;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Asra Nizami on 2/20/2015.
@@ -40,14 +39,13 @@ public class Room {
         this.building = building;
     }
 
-    private List<Tuple> scheduledTimes = new ArrayList<Tuple>();
+    private ArrayList<Event> scheduledEvents = new ArrayList<Event>();
 
-    public List<Tuple> getScheduledTimes(){
-        return scheduledTimes;
+    public ArrayList<Event> getScheduledEvents(){
+        return scheduledEvents;
     }
 
-    public void addScheduleTimes(Tuple time){
-        this.scheduledTimes.add(time);
-
+    public void addEvent(Event event){
+        this.scheduledEvents.add(event);
     }
 }
