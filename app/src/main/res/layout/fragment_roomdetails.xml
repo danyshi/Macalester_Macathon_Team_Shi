@@ -10,8 +10,8 @@
         android:id="@+id/room_details_listView"
         android:layout_gravity="center_horizontal"
         android:background="#8e44ad"
-        android:paddingLeft="300dip"
-        android:paddingRight="300dip"
+        android:paddingLeft="100dip"
+        android:paddingRight="100dip"
         />
 
     <ImageSwitcher

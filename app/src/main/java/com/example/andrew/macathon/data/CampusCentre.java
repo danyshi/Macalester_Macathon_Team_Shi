@@ -9,6 +9,11 @@ import java.util.List;
  */
 public class CampusCentre {
 
+    public CampusCentre(){
+        generateRooms();
+        generateSchedule();
+    }
+
     private HashMap<Integer, ArrayList<Room>> availableRooms;
     private ArrayList<Room> roomsList = new ArrayList<Room>();
 
@@ -41,17 +46,29 @@ public class CampusCentre {
         room1.addEvent(new Event(1000,1400, "Macathon Meeting"));
         room1.addEvent(new Event(1600,1800, "We have this space just because we can"));
         room1.addEvent(new Event(2200,2300, "Late night homework parties woo!"));
+        room1.addEvent(new Event(500, 600, "Coding!"));
+        room1.addEvent(new Event(1000,1400, "Macathon Meeting"));
+        room1.addEvent(new Event(1600,1800, "We have this space just because we can"));
+        room1.addEvent(new Event(2200,2300, "Late night homework parties woo!"));
+        room1.addEvent(new Event(500, 600, "Coding!"));
+        room1.addEvent(new Event(1000,1400, "Macathon Meeting"));
+        room1.addEvent(new Event(1600,1800, "We have this space just because we can"));
+        room1.addEvent(new Event(2200,2300, "Late night homework parties woo!"));
+        room1.addEvent(new Event(500, 600, "Coding!"));
+        room1.addEvent(new Event(1000,1400, "Macathon Meeting"));
+        room1.addEvent(new Event(1600,1800, "We have this space just because we can"));
+        room1.addEvent(new Event(2200,2300, "Late night homework parties woo!"));
 
         Room room2 = roomsList.get(1);
         room2.addEvent(new Event(500,600, "Investment Group meeting"));
         room2.addEvent(new Event(1900,2000, "Investment Group meeting"));
         room2.addEvent(new Event(2000,2100, "Entrepreneurship club"));
-        room2.addEvent(new Event(1750,1850, "Singing in the CC"));
+        room2.addEvent(new Event(1730,1830, "Singing in the CC"));
 
         Room room3 = roomsList.get(4);
         room3.addEvent(new Event(500,600, "Mac PandA"));
         room3.addEvent(new Event(2000,2100, "Mac Sudo"));
-        room3.addEvent(new Event(1750,1850, "MCSG"));
+        room3.addEvent(new Event(1730,1830, "MCSG"));
 
         addRoom(room1);
         addRoom(room2);
@@ -72,9 +89,5 @@ public class CampusCentre {
                 availableRooms.put(i, roomsList);
             }
         }
-    }
-
-    public List<Room> getRoomsList(){
-        return roomsList;
     }
 }

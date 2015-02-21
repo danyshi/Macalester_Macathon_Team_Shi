@@ -25,9 +25,7 @@ public class RoomDetails extends android.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_roomdetails, container, false);
 
-
-        String[] strArray = {"Time 1", "Time 2", "Time 3"};
-
+        String[] strArray = {"No events today."};
         if (getArguments() != null){
             Bundle bundle = getArguments();
              ArrayList<String> data = bundle.getStringArrayList("key");
