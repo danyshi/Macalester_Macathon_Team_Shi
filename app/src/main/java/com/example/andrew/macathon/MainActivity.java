@@ -101,38 +101,29 @@ public class MainActivity extends Activity implements UpdateRoomStatus{
     }
 
     public String convertTime(Integer[] times) {
-        int startTime, endTime;
-        String a, b;
-        if (times[0] > 1300) {
-            startTime = times[0] - 1300;
-            a = "pm";
+        String startTime, endTime;
+        startTime = getTimeString(times[0]);
+        endTime = getTimeString(times[1]);
+        return startTime + " - " + endTime + " ";
+    }
+
+    public String getTimeString(Integer time){
+        String ampm;
+        if (time > 1200) {
+            time -= 1200;
+            ampm = "pm";
         } else {
-            a = "am";
-            startTime = times[0];
+            ampm = "am";
         }
-        if (times[1] > 1300) {
-            endTime = times[1] - 1300;
-            b = "pm";
+        int hrsStart = time / 100;
+        int minStart = time - 100 * hrsStart;
+        String minStartString;
+        if (minStart == 50){
+            minStartString = "30";
         } else {
-            b = "am";
-            endTime = times[1];
+            minStartString = "00";
         }
-        int hrsStart = startTime / 100;
-        int hrsEnd = endTime / 100;
-        int minStart = startTime - 100 * hrsStart;
-        int minEnd = endTime - 100 * hrsEnd;
-        String minStartString, minEndString;
-        if (minStart < 10){
-            minStartString = "0" + minStart;
-        } else {
-            minStartString = Integer.toString(minStart);
-        }
-        if (minEnd == 50){
-            minEndString = "30" ;
-        } else {
-            minEndString = "00";
-        }
-        return hrsStart + ":" + minStartString  + a + " - " + hrsEnd + ":" + minEndString + b + " ";
+        return (hrsStart+":" + minStartString + ampm);
     }
 
     public void viewRoomDetails(int roomKey){
