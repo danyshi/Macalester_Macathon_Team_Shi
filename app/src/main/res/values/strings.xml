@@ -11,4 +11,6 @@
         <item>Event3</item>
     </string-array>
 
+    <string name="title_activity_campus">CampusActivity</string>
+
 </resources>
