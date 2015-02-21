@@ -1,5 +1,6 @@
 package com.example.andrew.macathon;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
@@ -45,6 +46,7 @@ public class RoomDetails extends android.app.Fragment {
 
         TextView textView = (TextView) rootView.findViewById(R.id.room_name);
         textView.setText(roomName);
+        textView.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "FuturaExtended.ttf"));
 
         Button button = (Button) rootView.findViewById(R.id.return_button);
         button.setOnClickListener(new View.OnClickListener() {

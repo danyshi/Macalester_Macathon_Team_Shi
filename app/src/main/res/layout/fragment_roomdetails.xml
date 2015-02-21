@@ -5,21 +5,20 @@
     android:weightSum="1"
     android:id="@+id/window">
 
-    <TextView
+    <Space
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView"
+        android:layout_height="150dp"
         android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="732dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/room_name"
         android:background="#8e44ad"
         android:layout_gravity="center_horizontal"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:paddingLeft="10dp"/>
 
     <ListView
         android:layout_width="732dp"
@@ -41,5 +40,6 @@
         android:layout_height="wrap_content"
         android:text="Return to floor"
         android:id="@+id/return_button"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="#AD4DA3"/>
 </LinearLayout>

@@ -119,12 +119,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Campus Center"
-        android:id="@+id/textView2"
+        android:text="@string/building_name_floor"
+        android:gravity="center"
+        android:id="@+id/title"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textColor="#9b59b6"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:layout_marginTop="40dp"/>
 
 
 </RelativeLayout>

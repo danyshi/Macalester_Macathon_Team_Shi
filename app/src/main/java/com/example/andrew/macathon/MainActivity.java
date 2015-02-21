@@ -1,6 +1,7 @@
 package com.example.andrew.macathon;
 
 import android.app.Fragment;
+import android.graphics.Typeface;
 import android.support.v4.app.FragmentTransaction;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.example.andrew.macathon.data.CampusCentre;
@@ -85,23 +87,31 @@ public class MainActivity extends Activity implements UpdateRoomStatus{
             }
         });
 
-
-
+        setFonts();
         new CheckAvailabilityTask(this).execute();
+    }
+
+    private void setFonts() {
+        //Make fonts from assets
+        TextView title = (TextView) findViewById(R.id.title);
+        //Set Fonts
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "FuturaExtended.ttf");
+        title.setTypeface(typeface);
+
     }
 
     public String convertTime(Integer[] times) {
         int startTime, endTime;
         String a, b;
-        if (times[0] > 1200) {
-            startTime = times[0] - 1200;
+        if (times[0] > 1300) {
+            startTime = times[0] - 1300;
             a = "pm";
         } else {
             a = "am";
             startTime = times[0];
         }
-        if (times[1] > 1200) {
-            endTime = times[1] - 1200;
+        if (times[1] > 1300) {
+            endTime = times[1] - 1300;
             b = "pm";
         } else {
             b = "am";
@@ -117,10 +127,10 @@ public class MainActivity extends Activity implements UpdateRoomStatus{
         } else {
             minStartString = Integer.toString(minStart);
         }
-        if (minEnd < 10){
-            minEndString = "0" + minEnd;
+        if (minEnd == 50){
+            minEndString = "30" ;
         } else {
-            minEndString = Integer.toString(minEnd);
+            minEndString = "00";
         }
         return hrsStart + ":" + minStartString  + a + " - " + hrsEnd + ":" + minEndString + b + " ";
     }
