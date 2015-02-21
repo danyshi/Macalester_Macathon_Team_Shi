@@ -1,5 +1,6 @@
 package com.example.andrew.macathon.data;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,12 +34,24 @@ public class CampusCentre {
     }
 
     public void generateSchedule(){
-        ArrayList roomslist2 = new ArrayList();
-        roomslist2.add(roomsList.get(1));
-        roomslist2.add(roomsList.get(2));
-        roomslist2.add(roomsList.get(3));
-        roomslist2.add(roomsList.get(4));
-        availableRooms.put(1000, roomslist2);
+        Room room1 = roomsList.get(0);
+        room1.addEvent(new Event(1000,1400, "Macathon Meeting"));
+        room1.addEvent(new Event(1600,1800, "We have this space just because we can"));
+        room1.addEvent(new Event(2200,2300, "Late night homework parties woo!"));
+
+        Room room2 = roomsList.get(1);
+        room2.addEvent(new Event(1900,2000, "Investment Group meeting"));
+        room2.addEvent(new Event(2000,2100, "Entrepreneurship club"));
+        room2.addEvent(new Event(1750,1850, "Singing in the CC"));
+
+        Room room3 = roomsList.get(4);
+        room3.addEvent(new Event(1900,2000, "Mac PandA"));
+        room3.addEvent(new Event(2000,2100, "Mac Sudo"));
+        room3.addEvent(new Event(1750,1850, "MCSG"));
+
+        addRoom(room1);
+        addRoom(room2);
+        addRoom(room3);
     }
 
     public void addRoom(Room room){
