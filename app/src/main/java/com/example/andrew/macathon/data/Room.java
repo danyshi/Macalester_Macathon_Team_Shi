@@ -9,6 +9,7 @@ import java.util.List;
 public class Room {
 
     private String name, building;
+    private boolean isOccupied;
 
     public String getBuilding() {
         return building;
@@ -24,6 +25,14 @@ public class Room {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean getOccupationState(){
+        return isOccupied;
+    }
+
+    public void setOccupationState(Boolean isOccupied) {
+        this.isOccupied = isOccupied;
     }
 
     public Room(String name, String building){

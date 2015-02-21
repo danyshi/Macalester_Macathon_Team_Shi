@@ -1,6 +1,8 @@
 package com.example.andrew.macathon;
 
+import android.app.FragmentManager;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -13,37 +15,23 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
 
+import com.example.andrew.macathon.data.Room;
+
 
 public class MainActivity extends ActionBarActivity {
-    private Button room1;
-    private Button room2;
-    private Button room3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.floor_view);
 
-        room1 = (Button) findViewById(R.id.room1);
-        room1.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Room.class);
-                startActivity(intent);
-            }
-        });
-        room2 = (Button) findViewById(R.id.room2);
-        room2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Room.class);
-                startActivity(intent);
-            }
-        });
-        room3 = (Button) findViewById(R.id.room3);
-        room3.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Room.class);
-                startActivity(intent);
-            }
-        });
+        setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new MainFragment())
+                    .commit();
+        }
+
+
     }
 
     @Override
@@ -67,4 +55,63 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public static class MainFragment extends Fragment {
+        private Button room1;
+        private Button room2;
+        private Button room3;
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            //return super.onCreateView(inflater, container, savedInstanceState);
+//            getActivity().setContentView(R.layout.floor_view);
+            final View rootView = inflater.inflate(R.layout.floor_view, container, false);
+
+
+            room1 = (Button) rootView.findViewById(R.id.room1);
+            room1.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v) {
+
+
+                    rootView.setVisibility(View.GONE);
+//                    Intent intent = new Intent(getActivity(), Room.class);
+//                    startActivity(intent);
+                }
+            });
+            room2 = (Button) rootView.findViewById(R.id.room2);
+            room2.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), Room.class);
+                    startActivity(intent);
+                }
+            });
+            room3 = (Button) rootView.findViewById(R.id.room3);
+            room3.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), Room.class);
+                    startActivity(intent);
+                }
+            });
+
+
+            return rootView;
+        }
+
+        public void showRoom(){
+            RoomFragment roomFrag = new RoomFragment();
+
+            FragmentManager fm = getActivity().getFragmentManager();
+            int commit = fm.beginTransaction()
+                    .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                    .show(roomFrag)
+                    .commit();
+        }
+    }
+
 }
+
