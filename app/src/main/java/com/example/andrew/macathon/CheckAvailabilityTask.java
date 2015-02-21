@@ -37,6 +37,11 @@ public class CheckAvailabilityTask extends AsyncTask<String, String, String>{
                 Log.d("Room:", room.getRoomId());
                 updateRoom.processRoomStatusChange("not available", room.getRoomId());
             }
+            for (Room room : dataMap.getFreeRooms()) {
+                room.makeUnavailable();
+                Log.d("Room:", room.getRoomId());
+                updateRoom.processRoomStatusChange("available", room.getRoomId());
+            }
             if (stop) {
                 break;
             }

@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements UpdateRoomStatus{
         final ImageView roomView = (ImageView) findViewById(resID);
         if (action.equals("not available")) {
             final String roomNumber = room.substring(4);
-            Log.d("TEST", roomNumber);
+            Log.d("Making unavailable", roomNumber);
             MainActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -67,7 +67,14 @@ public class MainActivity extends Activity implements UpdateRoomStatus{
                 }
             });
         } else {
-
+            final String roomNumber = room.substring(4);
+            Log.d("Making available", roomNumber);
+            MainActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    roomView.setBackgroundDrawable(availableRooms.get(Integer.parseInt(roomNumber) - 1));
+                }
+            });
         }
     }
 
