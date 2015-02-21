@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by danyshi on 2/21/2015.
@@ -26,16 +28,13 @@ public class RoomDetails extends android.app.Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_roomdetails, container, false);
 
         String[] strArray = {"No events today."};
-        if (getArguments() != null){
-            Bundle bundle = getArguments();
-             ArrayList<String> data = bundle.getStringArrayList("key");
-
-            strArray = data.toArray(strArray);
-
+        ArrayList<String> data = getArguments().getStringArrayList("key");
+        if (data.size() > 1){
+            strArray = Arrays.copyOfRange(data.toArray(strArray), 1, data.size());
         } else {
             Log.d("======>", "arguments was nul ****************************************");
         }
-
+        String roomName = data.get(0);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
@@ -43,6 +42,9 @@ public class RoomDetails extends android.app.Fragment {
 
         ListView listView = (ListView) rootView.findViewById(R.id.room_details_listView);
         listView.setAdapter(adapter);
+
+        TextView textView = (TextView) rootView.findViewById(R.id.room_name);
+        textView.setText(roomName);
 
         Button button = (Button) rootView.findViewById(R.id.return_button);
         button.setOnClickListener(new View.OnClickListener() {

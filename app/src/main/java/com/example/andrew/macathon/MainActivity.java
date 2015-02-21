@@ -127,24 +127,25 @@ public class MainActivity extends Activity implements UpdateRoomStatus{
 
     public void viewRoomDetails(int roomKey){
         Room r = roomsList.get(roomKey);
+//        TextView cc202 = (TextView) findViewById(R.id.room_name);
         Log.d("room", "ROOM0 NAME:" + r.getName() + "*******************************");
         ArrayList<Event> events = r.getScheduledEvents();
-        ArrayList<String> schedule = new ArrayList<String>();
-
+        ArrayList<String> data = new ArrayList<String>();
+        data.add(r.getName()); //first entry is name of room
         for (Event e : events){
             Integer[] times = {e.getStartTime(), e.getEndTime()};
             String time = convertTime(times);
             String s = time + e.getTitle();
-            schedule.add(time + e.getTitle());
+            data.add(time + e.getTitle());
             Log.d("Schedule Item", s + "***********************************");
         }
 
         RoomDetails roomDetails = new RoomDetails();
-        if (schedule.size() != 0){
-            Bundle bundle = new Bundle();
-            bundle.putStringArrayList("key", schedule);
-            roomDetails.setArguments(bundle);
-        }
+        Bundle bundle = new Bundle();
+
+        bundle.putStringArrayList("key", data);
+        roomDetails.setArguments(bundle);
+
         getFragmentManager().beginTransaction()
                 .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                 .add(R.id.container, roomDetails)

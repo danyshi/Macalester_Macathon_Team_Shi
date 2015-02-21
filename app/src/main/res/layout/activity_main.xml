@@ -115,4 +115,16 @@
         android:background="@drawable/cc_2"
         android:contentDescription="@string/floor_plan" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Campus Center"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#9b59b6"
+        android:textStyle="bold"/>
+
+
 </RelativeLayout>
