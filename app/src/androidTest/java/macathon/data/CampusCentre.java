@@ -1,8 +1,6 @@
-package com.example.andrew.macathon.data;
+package macathon.data;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Asra Nizami on 2/20/2015.

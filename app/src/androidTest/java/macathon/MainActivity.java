@@ -1,7 +1,5 @@
-package com.example.andrew.macathon;
+package macathon;
 
-import android.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,15 +8,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 
+import com.example.andrew.macathon.R;
 import com.example.andrew.macathon.data.CampusCentre;
 import com.example.andrew.macathon.data.Event;
 import com.example.andrew.macathon.data.Room;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Handler;
 
 
 public class MainActivity extends Activity implements UpdateRoomStatus{

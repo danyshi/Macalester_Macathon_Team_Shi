@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/window">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/room_name"
+        android:background="#8e44ad"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"/>
+
+    <ListView
+        android:layout_width="732dp"
+        android:layout_height="339dp"
+        android:id="@+id/room_details_listView"
+        android:layout_gravity="center"
+        android:background="#8e44ad"
+        android:paddingLeft="100dip"
+        android:paddingRight="100dip"
+        android:drawSelectorOnTop="false" />
+
+    <ImageSwitcher
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageSwitcher" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return to floor"
+        android:id="@+id/return_button"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>

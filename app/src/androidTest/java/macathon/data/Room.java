@@ -1,6 +1,4 @@
-package com.example.andrew.macathon.data;
-
-import android.widget.ImageView;
+package macathon.data;
 
 import java.util.ArrayList;
 
