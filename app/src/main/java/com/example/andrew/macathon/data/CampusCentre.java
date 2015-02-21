@@ -27,6 +27,9 @@ public class CampusCentre {
         this.roomsList.add(new Room("CC 207", "Campus Centre", "CC207"));
     }
 
+    public ArrayList<Room> getAllRooms(){
+        return roomsList;
+    }
 
     public HashMap<Integer, ArrayList<Room>> getSchedule(){
         return availableRooms;
